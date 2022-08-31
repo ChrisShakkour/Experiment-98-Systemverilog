@@ -41,6 +41,12 @@ module dpram32x32_cb_test;
       @(posedge CEB1); //3rd posedge
       WEB1 = 1'b1;
       A1 = 32'h0f;
+      @(posedge CEB1); //3rd posedge
+      WEB1 = 1'b1;
+      A1 = 32'h0a;
+      @(posedge CEB1); //3rd posedge
+      CSB1 = 1'b1; // not_selected
+ 
       #30 $finish;
    end
 

@@ -21,12 +21,20 @@ module Pooling
 
    always_ff @(negedge clk) begin
       if (En == 1'b1) begin
-	 pooledReg[0] <= (convolution[0]>2) ? 8'h01 : 8'hff;
-	 pooledReg[1] <= (convolution[1]>2) ? 8'h01 : 8'hff;
-	 pooledReg[2] <= (convolution[2]>2) ? 8'h01 : 8'hff;
-	 pooledReg[3] <= (convResult>2)     ? 8'h01 : 8'hff;	 
+	 pooledReg[0] <= ($signed(convolution[0])>2) ? 8'h01 : 8'hff;
+	 pooledReg[1] <= ($signed(convolution[1])>2) ? 8'h01 : 8'hff;
+	 pooledReg[2] <= ($signed(convolution[2])>2) ? 8'h01 : 8'hff;
+	 pooledReg[3] <= ($signed(convResult)>2)     ? 8'h01 : 8'hff;	 
       end
    end
    
    assign pooledPixels = pooledReg;
 endmodule
+
+
+/*
+ pooledReg[0] <= (convolution[0]>2) ? 8'h01 : 8'hff;
+ pooledReg[1] <= (convolution[1]>2) ? 8'h01 : 8'hff;
+ pooledReg[2] <= (convolution[2]>2) ? 8'h01 : 8'hff;
+ pooledReg[3] <= (convResult>2)     ? 8'h01 : 8'hff;	 
+ */
