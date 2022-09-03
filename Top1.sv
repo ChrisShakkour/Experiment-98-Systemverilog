@@ -25,6 +25,8 @@ logic [31:0] W1_DATA_O1, W1_DATA_O2,W2_DATA_O1, W2_DATA_O2;
 logic En;
 
 
+   NeuralNet_cont NNC_U1(.*);   
+   
 // Example of generate statement	(required for experiment 2 later section)
 // genvar k;
 // generate for (k = 0; k <`NoOfKernels ; k = k + 1) begin
